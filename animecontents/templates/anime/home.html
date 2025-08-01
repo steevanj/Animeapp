@@ -1,0 +1,18 @@
+{% extends 'anime/base.html' %}
+{% block content %}
+<h2>Top Anime Picks</h2>
+<div class="row">
+  {% for anime in anime_list %}
+  <div class="col-md-3 mb-4">
+    <div class="card h-100">
+      <img src="{{ anime.images.jpg.image_url }}" class="card-img-top" alt="{{ anime.title }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ anime.title|truncatechars:20 }}</h5>
+        <p class="card-text">Rating: {{ anime.score|default:"N/A" }}</p>
+        <a href="{% url 'detail' anime.mal_id %}" class="btn btn-primary">View Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'anime/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <img src="{{ anime.images.jpg.image_url }}" class="img-fluid rounded shadow">
+  </div>
+  <div class="col-md-8">
+    <h2 class="mb-3">{{ anime.title }}</h2>
+    <p><strong>Episodes:</strong> {{ anime.episodes }}</p>
+    <p><strong>Score:</strong> ⭐ {{ anime.score }}</p>
+    <p><strong>Status:</strong> {{ anime.status }}</p>
+    <p><strong>Genres:</strong>
+      {% for genre in anime.genres %}
+        <span class="badge bg-primary">{{ genre.name }}</span>
+      {% endfor %}
+    </p>
+    <p><strong>Synopsis:</strong><br> {{ anime.synopsis }}</p>
+    <a href="{{ anime.url }}" target="_blank" class="btn btn-info mt-2">View on MyAnimeList</a>
+  </div>
+</div>
+
+{% if anime.trailer.youtube_id %}
+<hr class="my-4">
+<h4>📺 Official Trailer</h4>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/{{ anime.trailer.youtube_id }}"
+          title="YouTube trailer" allowfullscreen></iframe>
+</div>
+{% endif %}
+
+{% endblock %}

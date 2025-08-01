@@ -1,0 +1,50 @@
+{% extends 'anime/base.html' %}
+{% block content %}
+<h3>🎯 Filter Anime</h3>
+<form method="get" class="row g-3 mb-4">
+  <div class="col-md-4">
+    <label class="form-label">Genre</label>
+    <select name="genre" class="form-select">
+      <option value="">-- Select Genre --</option>
+      <option value="1">Action</option>
+      <option value="2">Adventure</option>
+      <option value="4">Comedy</option>
+      <option value="8">Drama</option>
+      <option value="10">Fantasy</option>
+      <option value="24">Sci-Fi</option>
+      <!-- Add more from Jikan genres -->
+    </select>
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Season</label>
+    <select name="season" class="form-select">
+      <option value="">--</option>
+      <option value="winter">Winter</option>
+      <option value="spring">Spring</option>
+      <option value="summer">Summer</option>
+      <option value="fall">Fall</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <label class="form-label">Year</label>
+    <input type="number" name="year" class="form-control" min="2000" max="2025">
+  </div>
+  <div class="col-md-2 align-self-end">
+    <button type="submit" class="btn btn-primary w-100">Apply</button>
+  </div>
+</form>
+
+<div class="row">
+  {% for anime in anime_list %}
+  <div class="col-md-3 mb-3">
+    <div class="card h-100">
+      <img src="{{ anime.images.jpg.image_url }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ anime.title }}</h5>
+        <a href="{% url 'detail' anime.mal_id %}" class="btn btn-sm btn-outline-primary">Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

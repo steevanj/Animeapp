@@ -1,0 +1,17 @@
+{% extends 'anime/base.html' %}
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+<div class="row">
+  {% for anime in anime_list %}
+  <div class="col-md-3 mb-3">
+    <div class="card h-100">
+      <img src="{{ anime.images.jpg.image_url }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ anime.title }}</h5>
+        <a href="{% url 'detail' anime.mal_id %}" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
