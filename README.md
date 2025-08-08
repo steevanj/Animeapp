@@ -25,7 +25,7 @@ A sleek, responsive anime info platform built using **Django** and the **Jikan A
 
 ## 🔗 Live Site
 
-👉 [https://your-app-name.onrender.com](https://your-app-name.onrender.com) *(Update this link after deployment)*
+👉 (https://animeapp-8173.onrender.com/)
 
 ---
 
